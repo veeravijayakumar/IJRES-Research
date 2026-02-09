@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> IJRES - ARCHIVES</title>
+    <link rel="icon" type="image/png" href="Images/InternationalJournalofResearchlogo11.png">
+
+    <!-- Google Fonts for Attractive Letters -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- 1. GLOBAL VARIABLES & RESET --- */
+        :root {
+            /* Vibrant Palette */
+            --primary: #4361ee;
+            --secondary: #7209b7;
+            --accent: #4cc9f0;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            
+            /* Text Colors - Optimized for Visibility */
+            --text-heading: #0f172a; /* Very Dark Blue for Headings */
+            --text-body: #334155;    /* Dark Grey for Body */
+            --text-muted: #64748b;   /* Lighter Grey for Meta info */
+            
+            --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+            
+            /* Gradients */
+            --grad-hero: linear-gradient(135deg, #4361ee 0%, #3a0ca3 50%, #7209b7 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif; /* Modern readable font */
+            line-height: 1.6;
+            color: var(--text-body);
+            background: var(--light-bg);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif; /* Attractive Heading Font */
+            line-height: 1.2;
+        }
+
+        a { text-decoration: none; }
+
+        /* --- 2. HEADER --- */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .top-banner {
+            background: var(--dark-bg);
+            color: var(--accent);
+            text-align: center;
+            font-size: 0.8rem;
+            padding: 8px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header Group: Logo + Volume Box */
+        .nav-brand-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem; /* Adjusted for icon visibility */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+
+        .logo-text h1 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            line-height: 1.1;
+            margin: 0;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Volume Box Styling */
+        .volume-box {
+            width: 140px; /* Slightly optimized for header fit */
+            padding: 10px 10px;
+            border: 3px solid #1e3a8a;
+            border-radius: 10px;
+            text-align: center;
+            font-family: "Times New Roman", serif;
+            background-color: #ffffff;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .volume-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30, 58, 138, 0.15);
+        }
+
+        .volume-title {
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #1e3a8a;
+            text-transform: uppercase;
+        }
+
+        .volume-number {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 5px 0;
+            color: #000000;
+            line-height: 1;
+        }
+
+        .volume-year {
+            font-size: 12px;
+            color: #555555;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-heading);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+        
+        /* Active link indicator */
+        .nav-links a.active-link {
+            color: var(--primary);
+        }
+        .nav-links a.active-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; color: var(--text-heading); }
+
+        /* --- 3. HERO SECTION --- */
+        .hero {
+            background: var(--grad-hero);
+            color: white;
+            padding: 100px 5% 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before, .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: floatShape 15s infinite alternate;
+        }
+        .hero::before { top: -100px; left: -100px; background: #4cc9f0; }
+        .hero::after { bottom: -100px; right: -100px; background: #f72585; }
+
+        @keyframes floatShape {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            letter-spacing: -1px;
+        }
+
+        .hero p { 
+            font-size: 1.2rem; 
+            font-weight: 500; 
+            margin-bottom: 30px; 
+            opacity: 0.95;
+        }
+
+        /* --- 4. ARCHIVES GRID --- */
+        .archives-container {
+            padding: 60px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            flex-grow: 1; /* Pushes footer down */
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--text-heading);
+            margin-bottom: 10px;
+        }
+        
+        .section-header .divider {
+            width: 80px;
+            height: 4px;
+            background: var(--grad-hero);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Archive Card Style */
+        .archive-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .archive-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+            padding: 25px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .vol-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .card-header h3 {
+            font-size: 1.5rem;
+            color: var(--text-heading);
+            margin-bottom: 5px;
+        }
+
+        .card-header .year {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .card-body {
+            padding: 25px;
+            flex-grow: 1;
+        }
+
+        .paper-list {
+            list-style: none;
+        }
+
+        .paper-list li {
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: var(--text-body);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .paper-list li i {
+            color: var(--accent);
+            margin-top: 4px;
+            font-size: 0.8rem;
+        }
+
+        .card-footer {
+            padding: 20px 25px;
+            border-top: 1px solid #f1f5f9;
+            text-align: center;
+        }
+
+        .btn-archive {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            background: var(--light-bg);
+            color: var(--text-heading);
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .btn-archive:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* --- 5. FOOTER --- */
+        footer {
+            background: var(--dark-bg);
+            color: #cbd5e0;
+            padding: 70px 5% 30px;
+            margin-top: auto; /* Ensures footer stays at bottom if content is short */
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .footer-col h3 { color: white; margin-bottom: 25px; font-size: 1.4rem; font-weight: 700; }
+        .footer-col p, .footer-col a { color: #94a3b8; font-size: 0.95rem; margin-bottom: 10px; display: block; }
+        .footer-col a:hover { color: var(--accent); transform: translateX(5px); transition: 0.3s; }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        /* --- 6. FLOATING WHATSAPP --- */
+        .whatsapp-float {
+            position: fixed;
+            width: 65px;
+            height: 65px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 32px;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+            animation: pulse-green 2s infinite;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 10px 25px rgba(37, 211, 102, 0.6); }
+        
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .nav-brand-group {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .volume-box {
+                width: 120px;
+                padding: 5px;
+            }
+            .volume-number { font-size: 24px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { 
+                display: none; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%; 
+                background: white; 
+                flex-direction: column; 
+                padding: 25px; 
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+            }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            
+            .hero h2 { font-size: 2.2rem; }
+            
+            .whatsapp-float { 
+                width: 55px; 
+                height: 55px; 
+                font-size: 28px; 
+                bottom: 20px; 
+                right: 20px; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER SECTION -->
+    <header>
+        <div class="top-banner">
+            🚀 OPEN ACCESS | PEER REVIEWED | ISSN: 2360-7745
+        </div>
+        <nav>
+            <!-- Left Side: Logo and Volume Box grouped -->
+            <div class="nav-brand-group">
+            <a href="index.html" class="logo">
+                <img 
+                    src="Images/InternationalJournalofResearchlogo11.png" 
+                    alt="IJRES Logo" 
+                     class="logo-icon"
+                >
+
+                <div class="logo-text">
+                    <h1>IJRES</h1>
+                    <p>Research in Educational Studies</p>
+                </div>
+            </a>
+
+                <!-- Volume Box Widget (As requested) -->
+                <!-- <div class="volume-box">
+                    <div class="volume-title">Current</div>
+                    <div class="volume-number">V.12</div>
+                    <div class="volume-year">2024</div>
+                </div> -->
+            </div>
+
+            <!-- Right Side: Navigation Links -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Archives.html" class="active-link">Archives</a></li>
+                <li><a href="Editorchoice.html">Editorial Board</a></li>
+                <!-- <li><a href="#">For Authors</a></li> -->
+                <li><a href="submit.html" style="color: var(--primary);">Submit Paper</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="Index_Page.html">Index</a></li>
+            </ul>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="hamburger" id="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Journal Archives</h2>
+            <p>Explore our repository of past research papers, volumes, and issues. A comprehensive collection of scientific knowledge.</p>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT: ARCHIVES LIST -->
+    <main class="archives-container">
+        
+        <div class="section-header">
+            <h2>Past Volumes & Issues</h2>
+            <div class="divider"></div>
+        </div>
+
+        <div class="archive-grid">
+            
+            <!-- Archive Card 1 -->
+            <div class="archive-card">
+                <div class="card-header">
+                    <span class="vol-badge">Latest</span>
+                    <h3>Volume 12</h3>
+                    <span class="year">Issue 1 - 2, 2024</span>
+                </div>
+                <div class="card-body">
+                    <ul class="paper-list">
+                        <li><i class="fa-solid fa-file-pdf"></i> Artificial Intelligence in Education</li>
+                        <li><i class="fa-solid fa-file-pdf"></i> Sustainable Energy Solutions</li>
+                        <li><i class="fa-solid fa-file-pdf"></i> Global Economic Trends</li>
+                        <li><i class="fa-solid fa-ellipsis"></i> <span style="color:var(--text-muted); font-size:0.8rem">+12 more papers</span></li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn-archive">View Volume 12</a>
+                </div>
+            </div>
+
+            <!-- Archive Card 2 -->
+            <div class="archive-card">
+                <div class="card-header">
+                    <h3>Volume 11</h3>
+                    <span class="year">Issue 1 - 6, 2023</span>
+                </div>
+                <div class="card-body">
+                    <ul class="paper-list">
+                        <li><i class="fa-solid fa-file-pdf"></i> Modern Medical Practices</li>
+                        <li><i class="fa-solid fa-file-pdf"></i> Civil Engineering Innovations</li>
+                        <li><i class="fa-solid fa-file-pdf"></i> Data Privacy Laws</li>
+                        <li><i class="fa-solid fa-ellipsis"></i> <span style="color:var(--text-muted); font-size:0.8rem">+45 more papers</span></li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn-archive">View Volume 11</a>
+                </div>
+            </div>
+
+            <!-- Archive Card 3 -->
+            <div class="archive-card">
+                <div class="card-header">
+                    <h3>Volume 10</h3>
+                    <span class="year">Issue 1 - 4, 2022</span>
+                </div>
+                <div class="card-body">
+                    <ul class="paper-list">
+                        <li><i class="fa-solid fa-file-pdf"></i> Post-Pandemic Recovery</li>
+                        <li><i class="fa-solid fa-file-pdf"></i> Remote Learning Effectiveness</li>
+                        <li><i class="fa-solid fa-file-pdf"></i> Supply Chain Management</li>
+                        <li><i class="fa-solid fa-ellipsis"></i> <span style="color:var(--text-muted); font-size:0.8rem">+32 more papers</span></li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn-archive">View Volume 10</a>
+                </div>
+            </div>
+
+            <!-- Archive Card 4 -->
+            <div class="archive-card">
+                <div class="card-header">
+                    <h3>Volume 9</h3>
+                    <span class="year">Issue 1 - 6, 2021</span>
+                </div>
+                <div class="card-body">
+                    <ul class="paper-list">
+                        <li><i class="fa-solid fa-file-pdf"></i> Renewable Energy Policies</li>
+                        <li><i class="fa-solid fa-file-pdf"></i> Psychology of Digital Age</li>
+                        <li><i class="fa-solid fa-file-pdf"></i> Advanced Robotics</li>
+                        <li><i class="fa-solid fa-ellipsis"></i> <span style="color:var(--text-muted); font-size:0.8rem">+28 more papers</span></li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn-archive">View Volume 9</a>
+                </div>
+            </div>
+
+             <!-- Archive Card 5 -->
+             <div class="archive-card">
+                <div class="card-header">
+                    <h3>Volume 8</h3>
+                    <span class="year">Issue 1 - 4, 2020</span>
+                </div>
+                <div class="card-body">
+                    <ul class="paper-list">
+                        <li><i class="fa-solid fa-file-pdf"></i> Machine Learning Algorithms</li>
+                        <li><i class="fa-solid fa-file-pdf"></i> Environmental Impact</li>
+                        <li><i class="fa-solid fa-file-pdf"></i> Urban Planning</li>
+                        <li><i class="fa-solid fa-ellipsis"></i> <span style="color:var(--text-muted); font-size:0.8rem">+30 more papers</span></li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn-archive">View Volume 8</a>
+                </div>
+            </div>
+
+             <!-- Archive Card 6 -->
+             <div class="archive-card">
+                <div class="card-header">
+                    <h3>Volume 7</h3>
+                    <span class="year">Issue 1 - 6, 2019</span>
+                </div>
+                <div class="card-body">
+                    <ul class="paper-list">
+                        <li><i class="fa-solid fa-file-pdf"></i> Cloud Computing Security</li>
+                        <li><i class="fa-solid fa-file-pdf"></i> Bioinformatics</li>
+                        <li><i class="fa-solid fa-file-pdf"></i> Micro-Finance</li>
+                        <li><i class="fa-solid fa-ellipsis"></i> <span style="color:var(--text-muted); font-size:0.8rem">+25 more papers</span></li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn-archive">View Volume 7</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+   <!-- Footer -->
+    <footer id="about" style="background: #0f172a; color: #cbd5e0; padding: 70px 5% 30px; margin-top: auto; border-top: 1px solid #1e293b;">
+    
+    <div class="footer-grid">
+        
+        <!-- Column 1: About -->
+        <div class="footer-col">
+            <h3 style="color:white; font-size:1.4rem; font-weight:700; margin-bottom:20px;">About IJRES</h3>
+            <p style="line-height:1.8; font-size:0.95rem; color:#94a3b8;">International Journal for Research in Educational Studies is a bi-yearly, open access, double-blind peer-reviewed journal dedicated to advancing educational research globally.</p>
+        </div>
+
+        <!-- Column 2: Contact -->
+        <div class="footer-col" id="contact">
+            <h3 style="color:white; font-size:1.4rem; font-weight:700; margin-bottom:20px;">Contact Us</h3>
+            <p style="line-height:1.8; font-size:0.95rem; color:#94a3b8;">
+                <strong>Dr. G. Ramachandran</strong><br>
+                Assistant Professor<br>
+                Department of English<br>
+                MV College, New Delhi
+            </p>
+            <p style="margin-top:15px; font-size:0.95rem; color:#94a3b8;">📧 Editor.IJRES@gmail.com</p>
+        </div>
+
+        <!-- Column 3: Quick Links -->
+        <div class="footer-col">
+            <h3 style="color:white; font-size:1.4rem; font-weight:700; margin-bottom:20px;">Quick Links</h3>
+            <ul style="list-style:none; line-height:2;">
+                <li><a href="#" style="color:#cbd5e0; text-decoration:none; font-size:0.95rem;">About Journal</a></li>
+                <li><a href="#" style="color:#cbd5e0; text-decoration:none; font-size:0.95rem;">Editorial Team</a></li>
+                <li><a href="#" style="color:#cbd5e0; text-decoration:none; font-size:0.95rem;">Review Guidelines</a></li>
+            </ul>  
+        </div>
+
+        <!-- Column 4: Indexing Partners (Images) -->
+        <div class="footer-logo">
+            <h3 style="color:white; font-size:1.4rem; font-weight:700; margin-bottom:20px;">Indexing Partners</h3>
+            <div class="footer-images-container">
+                <!-- FIXED: Added closing quotes to src -->
+                <img src="Images/Scope_us.png" alt="Scopus" class="footer-logo">
+                <img src="Images/Crossref.png" alt="Crossref" class="footer-logo">
+                <!-- <img src="Images/Crosscheck.jpg" alt="Crosscheck" class="footer-logo"> -->
+                <img src="Images/GOOG.png" alt="Google Scholar" class="footer-logo">
+                <img src="Images/COPE.png" alt="COPE" class="footer-logo">
+                <img src="Images/ROADDD.png" alt="ROAD" class="footer-logo">
+                <!-- <img src="Images/NKI.jpg" alt="NKI" class="footer-logo"> -->
+                <img src="Images/E23.png" alt="E23" class="footer-logo">
+                <img src="Images/journal-tocs.png" alt="Journal TOCs" class="footer-logo">
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Copyright Bar -->
+    <div style="text-align:center; padding-top:30px; border-top:1px solid #334155; margin-top:50px; font-size:0.9rem; color:#64748b;">
+        &copy; 2021-2026 IJRES. All rights reserved.
+    </div>
+</footer>
+
+<style>
+
+
+    /* Makes the footer images very small and horizontal */
+.footer-logo {
+    max-height: 30px;  /* <--- This makes them very small (adjust as needed) */
+    width: auto;       /* Keeps the width proportional so they don't stretch */
+    object-fit: contain; /* Ensures the logo fits inside the small height */
+    background: transparent;
+    display: inline-block;
+    margin: 0 5px;     /* Adds a tiny bit of space between logos */
+    vertical-align: middle;
+}
+
+/* Ensures the container stays in a row */
+.footer-images-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Space between the tiny logos */
+    align-items: center;
+}
+</style>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabContent, tabButtons;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            tabButtons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        function toggleMenu() {
+            var navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        function handleCategoryClick(categoryName) {
+            event.preventDefault();
+            var notification = document.getElementById("notification");
+            notification.innerText = "Filtering papers for " + categoryName + "...";
+            notification.className = "show";
+            setTimeout(function(){ notification.className = notification.className.replace("show", ""); }, 3000);
+        }
+    </script>
+</body>
+</html>
