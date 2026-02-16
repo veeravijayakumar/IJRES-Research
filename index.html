@@ -6,7 +6,6 @@
     <title> IJRES - RESEARCH PAPPER</title>
     <link rel="icon" type="image/png" href="Images/InternationalJournalofResearchlogo11.png">
     
-
     <meta name="google-site-verification" content="7WOs_BVCe2jcq95YHjUAVkr7Z1OLIC3kRBEQ95Mhqfg" />
     <!-- Google Fonts for Attractive Letters -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,11 +43,18 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif; /* Modern readable font */
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--text-body);
-            background: var(--light-bg);
+            /* UPDATED: Modern Mesh Gradient Background */
+            background-color: #f8fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(67, 97, 238, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(114, 9, 183, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(76, 201, 240, 0.1) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(247, 37, 133, 0.05) 0px, transparent 50%);
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
         h1, h2, h3, h4 {
@@ -88,28 +94,26 @@
         }
 
         .volume-square {
-  width: 80px;
-  height: 100px;
-  border: 3px solid #110342;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: Georgia, serif;
-  background: #fafafa;
-}
+            width: 80px;
+            height: 100px;
+            border: 3px solid #110342;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Georgia, serif;
+            background: #fafafa;
+        }
 
-.volume-square span {
-  font-size: 14px;
-  letter-spacing: 2px;
-}
+        .volume-square span {
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
 
-.volume-square h2 {
-  font-size: 38px;
-  margin: 5px 0 0;
-}
-
-
+        .volume-square h2 {
+            font-size: 38px;
+            margin: 5px 0 0;
+        }
 
         .logo {
             display: flex;
@@ -119,60 +123,21 @@
         }
 
         .logo-icon {
-            width: 45px;
-            height: 45px;
-            background: white;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(241, 240, 240, 0.3);
+            width: 60px;
+            height: auto;
         }
 
         .logo-text h1 {
-            font-size: 1.2rem; /* Slightly larger for visibility */
-            font-weight: 800;
-            color: var(--text-heading);
-            line-height: 1.1;
+            margin: 0;
+            font-size: 24px;
+            color: #570303;
         }
 
         .logo-text p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 600;
+            margin: 0;
+            font-size: 14px;
+            color: #555;
         }
-
-
-        .volume-box {
-  width: 160px;
-  padding: 18px 10px;
-  border: 3px solid #1e3a8a;
-  border-radius: 10px;
-  text-align: center;
-  font-family: "Times New Roman", serif;
-  background-color: #ffffff;
-}
-
-.volume-title {
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: #1e3a8a;
-}
-
-.volume-number {
-  font-size: 42px;
-  font-weight: bold;
-  margin: 10px 0;
-  color: #000000;
-}
-
-.volume-year {
-  font-size: 14px;
-  color: #555555;
-}
 
         .nav-links {
             display: flex;
@@ -314,20 +279,125 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 30px;
+            align-items: stretch; /* Ensures equal height cards */
         }
 
-        .card {
-            background: white;
-            border-radius: 24px;
-            padding: 35px;
-            box-shadow: var(--card-shadow);
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid #f1f5f9;
-        }
 
-        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15); }
+/* ============================
+   CARD STYLING & COLORS
+============================ */
+
+.card {
+    /* UPDATED: Flex layout for visual fit */
+    display: flex;
+    flex-direction: column;
+    background: #ffffff; /* Base white */
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: var(--card-shadow);
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #f1f5f9;
+    height: 100%; /* Fill grid cell height */
+}
+
+/* Flex spacer to push footer to bottom */
+.card-content-spacer {
+    flex-grow: 1;
+}
+
+/* Top gradient strip */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, #4361ee, #7209b7);
+}
+
+/* Hover glow */
+.card:hover {
+    transform: translateY(-8px); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* ===== COLOR VARIANTS FOR PUBLISHED PAPERS ===== */
+
+/* Blue Theme */
+.card.blue {
+    background: #f0f9ff; /* Light Blue Background */
+    border-color: #e0f2fe;
+}
+.card.blue::before {
+    background: linear-gradient(90deg, #4361ee, #4cc9f0);
+}
+.card.blue:hover {
+    box-shadow: 0 20px 40px rgba(67,97,238,0.25);
+}
+
+/* Pink Theme */
+.card.pink {
+    background: #fdf2f8; /* Light Pink Background */
+    border-color: #fce7f3;
+}
+.card.pink::before {
+    background: linear-gradient(90deg, #f72585, #b5179e);
+}
+.card.pink:hover {
+    box-shadow: 0 20px 40px rgba(247,37,133,0.25);
+}
+
+/* Green Theme */
+.card.green {
+    background: #ecfdf5; /* Light Green Background */
+    border-color: #d1fae5;
+}
+.card.green::before {
+    background: linear-gradient(90deg, #06d6a0, #118ab2);
+}
+.card.green:hover {
+    box-shadow: 0 20px 40px rgba(6,214,160,0.25);
+}
+
+/* Orange Theme */
+.card.orange {
+    background: #fff7ed; /* Light Orange Background */
+    border-color: #ffedd5;
+}
+.card.orange::before {
+    background: linear-gradient(90deg, #f8961e, #f3722c);
+}
+.card.orange:hover {
+    box-shadow: 0 20px 40px rgba(248,150,30,0.25);
+}
+
+/* Purple Theme */
+.card.purple {
+    background: #f5f3ff; /* Light Purple Background */
+    border-color: #ede9fe;
+}
+.card.purple::before {
+    background: linear-gradient(90deg, #7209b7, #560bad);
+}
+.card.purple:hover {
+    box-shadow: 0 20px 40px rgba(114,9,183,0.25);
+}
+
+/* Dark Theme */
+.card.dark {
+    background: #f8fafc; 
+    border-color: #e2e8f0;
+}
+.card.dark::before {
+    background: linear-gradient(90deg, #1e293b, #0f172a);
+}
+.card.dark:hover {
+    box-shadow: 0 20px 40px rgba(15,23,42,0.25);
+}
+
 
         /* Attractive Gradient Text Utility */
         .gradient-heading {
@@ -389,9 +459,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 25px;
+            margin-top: auto; /* Keeps footer at bottom */
             padding-top: 25px;
-            border-top: 2px solid #f1f5f9;
+            border-top: 2px solid rgba(0,0,0,0.05);
         }
 
         .btn-download {
@@ -482,6 +552,25 @@
         .footer-col h3 { color: white; margin-bottom: 25px; font-size: 1.4rem; font-weight: 700; }
         .footer-col p, .footer-col a { color: #94a3b8; font-size: 0.95rem; }
         .footer-col a:hover { color: white; }
+        
+        /* Footer Images */
+        .footer-logo {
+            max-height: 30px;
+            width: auto;
+            object-fit: contain;
+            background: transparent;
+            display: inline-block;
+            margin: 0 5px;
+            vertical-align: middle;
+        }
+        .footer-images-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+        }
 
         @media (max-width: 768px) {
             .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
@@ -494,32 +583,6 @@
             .btn-download { width: 100%; justify-content: center; }
         }
       
-
-.logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    gap: 12px;
-}
-
-.logo-icon {
-    width: 60px;
-    height: auto;
-}
-
-.logo-text h1 {
-    margin: 0;
-    font-size: 24px;
-    color: #570303;
-}
-
-.logo-text p {
-    margin: 0;
-    font-size: 14px;
-    color: #555;
-}
-
-        
     </style>
 </head>
 <body>
@@ -527,24 +590,13 @@
     <!-- Notification Toast -->
     <div id="notification">Loading Category...</div>
 
-    <!-- Floating WhatsApp Widget -->
-    <!-- <a href="https://wa.me/919578153435?text=Hello%20IJRES,%20I%20have%20a%20question." class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-        <span class="whatsapp-tooltip">Chat with us!</span>
-    </a> -->
-
     <header>
         <div class="top-banner">
             🚀 OPEN ACCESS | PEER REVIEWED | ISSN: 2360-7745 | IJRES
         </div>
         <nav>
             <a href="index.html" class="logo">
-                <img 
-                    src="Images/InternationalJournalofResearchlogo11.png" 
-                    alt="IJRES Logo" 
-                     class="logo-icon"
-                >
-
+                <img src="Images/InternationalJournalofResearchlogo11.png" alt="IJRES Logo" class="logo-icon">
                 <div class="logo-text">
                     <h1>IJRES</h1>
                     <p>Research in Educational Studies</p>
@@ -591,7 +643,7 @@
     <div id="editor-choice" class="tab-content active">
         <div class="grid-layout">
 
-            <div class="card">
+            <div class="card blue">
                 <span style="background:#e707a4; color:black; padding:6px 16px; border-radius:20px; font-size:0.8rem; font-weight:800; display:inline-block; margin-bottom:15px;">BREAKING</span>
                 <h3 style="margin-bottom:15px; font-size:1.4rem; color:var(--text-heading);">Mental health & supervision experiences among doctoral researchers</h3>
                 <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">Mental health & supervision experiences among doctoral researchers highlight high levels of stress, anxiety, and burnout, often linked to workload and uncertainty.
@@ -606,7 +658,7 @@ Supportive, communicative supervision significantly improves well-being, motivat
             </div>
 
 
-            <div class="card">
+            <div class="card pink">
                 <span style="background:#e707a4; color:black; padding:6px 16px; border-radius:20px; font-size:0.8rem; font-weight:800; display:inline-block; margin-bottom:15px;">BREAKING</span>
                 <h3 style="margin-bottom:15px; font-size:1.4rem; color:var(--text-heading);">The impact of generative AI on doctoral progress</h3>
                 <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">The impact of generative AI on doctoral progress shows improved research efficiency through faster literature review, writing support, and data analysis.
@@ -621,7 +673,7 @@ However, ethical concerns, over-reliance, and integrity guidelines remain critic
             </div>
 
 
-            <div class="card">
+            <div class="card green">
                 <span style="background:#e707a4; color:black; padding:6px 16px; border-radius:20px; font-size:0.8rem; font-weight:800; display:inline-block; margin-bottom:15px;">BREAKING</span>
                 <h3 style="margin-bottom:15px; font-size:1.4rem; color:var(--text-heading);">Knowledge transfer in design research</h3>
                 <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">Knowledge transfer in design research focuses on converting design insights into usable methods, tools, and practices across disciplines.
@@ -636,7 +688,7 @@ Effective collaboration between researchers and practitioners enhances innovatio
             </div>
 
 
-            <div class="card">
+            <div class="card purple">
                 <span style="background:#e0e7ff; color:var(--primary); padding:6px 16px; border-radius:20px; font-size:0.8rem; font-weight:800; display:inline-block; margin-bottom:15px;">FEATURED</span>
                 <h3 style="margin-bottom:15px; font-size:1.4rem; color:var(--text-heading);">AI in Modern Classrooms</h3>
                 <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">Exploring how AI tools are reshaping personalized learning experiences in K-12 education.</p>
@@ -649,7 +701,7 @@ Effective collaboration between researchers and practitioners enhances innovatio
                 </a>
             </div>
 
-            <div class="card">
+            <div class="card orange">
                 <span style="background:#fee2e2; color:#dc2626; padding:6px 16px; border-radius:20px; font-size:0.8rem; font-weight:800; display:inline-block; margin-bottom:15px;">HOT TOPIC</span>
                 <h3 style="margin-bottom:15px; font-size:1.4rem; color:var(--text-heading);">STEM Education Strategies</h3>
                 <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">A comprehensive review of metacognitive teaching strategies in science and mathematics.</p>
@@ -668,202 +720,180 @@ Effective collaboration between researchers and practitioners enhances innovatio
     <div id="published-papers" class="tab-content">
         <div class="grid-layout">
 
-
-            <!-- THE UBIQUITOUS ROLE OF AI-->
-            <div class="card">
+            <!-- Paper 127 -->
+            <div class="card blue">
                 <div style="margin-bottom:15px;">
                     <span style="background:#021308; color:rgb(253, 253, 253); padding:5px 12px; border-radius:6px; font-size:0.8rem; font-weight:700;">Paper #127</span>
                 </div>
                 <h3 style="margin-bottom:12px; font-size:1.35rem; color:var(--text-heading);">THE UBIQUITOUS ROLE OF AI IN HIGHER EDUCATION</h3>
-                <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">THE UBIQUITOUS ROLE OF AI IN HIGHER EDUCATION: CHALLENGES AND POLICY RECOMMENDATIONS</p>
-                
-                <div class="paper-footer">
+                <div class="card-content-spacer">
+                    <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">THE UBIQUITOUS ROLE OF AI IN HIGHER EDUCATION: CHALLENGES AND POLICY RECOMMENDATIONS</p>
                     <div style="font-size:0.95rem; color:var(--text-muted); font-weight:600;">
                         <i class="fas fa-user" style="margin-right:5px;"></i>J John manoharan<br>E Sylvia2<br>
                         <p>14-Feb-2026</p>
                         <p>👁 82</p>
                     </div>
-                    <div class="volume-square">
-                    <span>VOLUME</span>
-                    <h2 style="color: #043553;">01</h2>
-                    </div>
+                </div>
                 
-
+                <div class="paper-footer">
+                    <div class="volume-square">
+                        <span>VOLUME</span>
+                        <h2 style="color: #043553;">01</h2>
+                    </div>
                     <div class="social-icons">
-                        <a href="https://wa.me/?text=THE UBIQUITOUS ROLE OF AI IN HIGHER EDUCATION: CHALLENGES AND POLICY RECOMMENDATIONS https://internationaljournalofresearchineducationalstudies.in/" target="_blank" class="wa-bg"><i class="fab fa-whatsapp"></i></a><br>
-                        <a href="#" class="tw-bg"><i class="fab fa-twitter"></i></a><br>
-                        <a href="Images/THEUBIQUITOUSROLEOFAI.pdf" class="btn-download" href="Images/THEUBIQUITOUSROLEOFAI.pdf">PDF</a>
+                        <a href="https://wa.me/?text=THE UBIQUITOUS ROLE OF AI IN HIGHER EDUCATION: CHALLENGES AND POLICY RECOMMENDATIONS https://internationaljournalofresearchineducationalstudies.in/" target="_blank" class="wa-bg"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="tw-bg"><i class="fab fa-twitter"></i></a>
+                        <a href="Images/THEUBIQUITOUSROLEOFAI.pdf" class="btn-download">PDF</a>
                     </div>
                 </div>
             </div>
-            <!-- THE UBIQUITOUS ROLE OF AI-->
 
-
-
-
-            <!-- Artificial Intelligence and the Archives of Memory-->
-            <div class="card">
+            <!-- Paper 126 -->
+            <div class="card pink">
                 <div style="margin-bottom:15px;">
                     <span style="background:#7aeca0; color:white; background-color: #233138; padding:5px 12px; border-radius:6px; font-size:0.8rem; font-weight:700;">Paper #126</span>
                 </div>
                 <h3 style="margin-bottom:12px; font-size:1.35rem; color:var(--text-heading);">Artificial Intelligence and the Archives of Memory</h3>
-                <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">Artificial Intelligence and the Archives of Memory: Preserving Culture and Heritage in the Digital Age</p>
-                
-                <div class="paper-footer">
+                <div class="card-content-spacer">
+                    <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">Artificial Intelligence and the Archives of Memory: Preserving Culture and Heritage in the Digital Age</p>
                     <div style="font-size:0.95rem; color:var(--text-muted); font-weight:600;">
                         <i class="fas fa-user" style="margin-right:5px;"></i> Dr.M.Samadhanam Emimal<br>Dr. Shagufta Parween<br>Mrs.Roshan Jameer MD<br>Dr. Saloman Raju Yarlagadda<br>Mr. V Temuzion Kumuja<br>
                         <p>14-Feb-2026</p>
                         <p>👁 75</p>
                     </div>
-                    <div class="volume-square">
-                    <span>VOLUME</span>
-                    <h2 style="color: #043553;">01</h2>
-                    </div>
+                </div>
                 
-
+                <div class="paper-footer">
+                    <div class="volume-square">
+                        <span>VOLUME</span>
+                        <h2 style="color: #043553;">01</h2>
+                    </div>
                     <div class="social-icons">
-                        <a href="https://wa.me/?text=Artificial Intelligence and the Archives of Memory https://internationaljournalofresearchineducationalstudies.in/" target="_blank" class="wa-bg"><i class="fab fa-whatsapp"></i></a><br>
-                        <a href="#" class="tw-bg"><i class="fab fa-twitter"></i></a><br>
-                        <a href="Images/AI_ArchivesMemory.pdf" class="btn-download" href="Images/AI_ArchivesMemory.pdf">PDF</a>
+                        <a href="https://wa.me/?text=Artificial Intelligence and the Archives of Memory https://internationaljournalofresearchineducationalstudies.in/" target="_blank" class="wa-bg"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="tw-bg"><i class="fab fa-twitter"></i></a>
+                        <a href="Images/AI_ArchivesMemory.pdf" class="btn-download">PDF</a>
                     </div>
                 </div>
             </div>
-            <!-- Artificial Intelligence and the Archives of Memory-->
 
-
-
-
-
-
-            <!-- Sarandhini_Marimuthu-->
-            <div class="card">
+            <!-- Paper 125 -->
+            <div class="card green">
                 <div style="margin-bottom:15px;">
                     <span style="background:#061141; color:white; padding:5px 12px; border-radius:6px; font-size:0.8rem; font-weight:700;">Paper #125</span>
                 </div>
-                <h3 style="margin-bottom:12px; font-size:1.35rem; color:var(--text-heading);">Writing Herself into History: Feminist Memoir and Colonial Re-Voicing inKate Grenville’s A Room Made of Leaves</h3>
-                <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">This article explores A Room Made of Leaves as a feminist rewriting of colonial history that reclaims female agency through silence, memoir, and self-authorship. 
-It shows how Grenville transforms Elizabeth Macarthur into an active narrator who challenges patriarchal historiography and restores women’s voices.</p>
-                
-                <div class="paper-footer">
+                <h3 style="margin-bottom:12px; font-size:1.35rem; color:var(--text-heading);">Writing Herself into History: Feminist Memoir</h3>
+                <div class="card-content-spacer">
+                    <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">This article explores A Room Made of Leaves as a feminist rewriting of colonial history that reclaims female agency through silence, memoir, and self-authorship.</p>
                     <div style="font-size:0.95rem; color:var(--text-muted); font-weight:600;">
                         <i class="fas fa-user" style="margin-right:5px;"></i> Miss.Sarandhini S & Dr.M.Marimuthu<br>
                         <p>14-Feb-2026</p>
                         <p>👁 80</p>
                     </div>
-                    <div class="volume-square">
-                    <span>VOLUME</span>
-                    <h2 style="color: #043553;">01</h2>
-                    </div>
+                </div>
                 
-
+                <div class="paper-footer">
+                    <div class="volume-square">
+                        <span>VOLUME</span>
+                        <h2 style="color: #043553;">01</h2>
+                    </div>
                     <div class="social-icons">
-                        <a href="https://wa.me/?text=Writing Herself into History: Feminist Memoir and Colonial Re-Voicing inKate Grenville’s A Room Made of Leaves https://internationaljournalofresearchineducationalstudies.in/" target="_blank" class="wa-bg"><i class="fab fa-whatsapp"></i></a><br>
-                        <a href="#" class="tw-bg"><i class="fab fa-twitter"></i></a><br>
-                        <a href="Images/SarandhiniMarimuthu.pdf" class="btn-download" href="Images/SarandhiniMarimuthu.pdf">PDF</a>
+                        <a href="https://wa.me/?text=Writing Herself into History https://internationaljournalofresearchineducationalstudies.in/" target="_blank" class="wa-bg"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="tw-bg"><i class="fab fa-twitter"></i></a>
+                        <a href="Images/SarandhiniMarimuthu.pdf" class="btn-download">PDF</a>
                     </div>
                 </div>
             </div>
-            <!-- Sarandhini_Marimuthu Ends-->
 
-            <div class="card">
+            <!-- Paper 124 -->
+            <div class="card purple">
                 <div style="margin-bottom:15px;">
                     <span style="background:#011d0c; color:white; padding:5px 12px; border-radius:6px; font-size:0.8rem; font-weight:700;">Paper #124</span>
                 </div>
                 <h3 style="margin-bottom:12px; font-size:1.35rem; color:var(--text-heading);">Post-Colonial Approaches in Aravind Adiga's Novels</h3>
-                <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">A comparative postcolonial analysis of "The White Tiger" and "Last Man in Tower"...</p>
-                
-                <div class="paper-footer">
+                <div class="card-content-spacer">
+                    <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">A comparative postcolonial analysis of "The White Tiger" and "Last Man in Tower"...</p>
                     <div style="font-size:0.95rem; color:var(--text-muted); font-weight:600;">
                         <i class="fas fa-user" style="margin-right:5px;"></i> Ms. Kayalvizhi G<br>
                         <p>1-Jan-2026</p>
                         <p>👁 426</p>
                     </div>
-                    <!-- <div class="volume-box">
-                            <div class="volume-title">VOLUME</div>
-                            <div class="volume-number">05</div>
-                            <div class="volume-year">2026</div>
-                    </div> -->
-
+                </div>
+                
+                <div class="paper-footer">
                     <div class="volume-square">
-                    <p>VOLUME</p>
-                    <h2 style="color: #1DA1F2;">01</h2>
+                        <p>VOLUME</p>
+                        <h2 style="color: #1DA1F2;">01</h2>
                     </div>
-
-                   <div class="social-icons">
-                        <a href="https://wa.me/?text=I want to read this paper: Post-Colonial Approaches in Aravind Adiga's Novels https://internationaljournalofresearchineducationalstudies.in/" target="_blank" class="wa-bg"><i class="fab fa-whatsapp"></i></a><br>
-                        <a href="#" class="tw-bg"><i class="fab fa-twitter"></i></a><br>
-                        <a href="Images/The Post Colonial Approches.pdf" class="btn-download" href="Images/The Post Colonial Approches.pdf">PDF</a><br>
+                    <div class="social-icons">
+                        <a href="https://wa.me/?text=Post-Colonial Approaches https://internationaljournalofresearchineducationalstudies.in/" target="_blank" class="wa-bg"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="tw-bg"><i class="fab fa-twitter"></i></a>
+                        <a href="Images/The Post Colonial Approches.pdf" class="btn-download">PDF</a>
                     </div>
                 </div>
             </div>
 
-
-
-            <div class="card">
+            <!-- Paper 123 -->
+            <div class="card orange">
                 <div style="margin-bottom:15px;">
                     <span style="background:#042fec; color:white; padding:5px 12px; border-radius:6px; font-size:0.8rem; font-weight:700;">Paper #123</span>
                 </div>
                 <h3 style="margin-bottom:12px; font-size:1.35rem; color:var(--text-heading);">Knowledge transfer in design research</h3>
-                <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">Effective collaboration between researchers and practitioners enhances innovation and real-world impact.</p>
-                
-                <div class="paper-footer">
+                <div class="card-content-spacer">
+                    <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">Effective collaboration between researchers and practitioners enhances innovation and real-world impact.</p>
                     <div style="font-size:0.95rem; color:var(--text-muted); font-weight:600;">
                         <i class="fas fa-user" style="margin-right:5px;"></i> Mr.Mohana Sundaram<br>
                         <p>18-Dec-2025</p>
                         <p>👁 2,800</p>
                     </div>
-                    <div class="volume-square">
-                    <span>VOLUME</span>
-                    <h2 style="color: #043553;">03</h2>
-                    </div>
+                </div>
                 
-
+                <div class="paper-footer">
+                    <div class="volume-square">
+                        <span>VOLUME</span>
+                        <h2 style="color: #043553;">03</h2>
+                    </div>
                     <div class="social-icons">
-                        <a href="https://wa.me/?text=Knowledge transfer in design research https://internationaljournalofresearchineducationalstudies.in/" target="_blank" class="wa-bg"><i class="fab fa-whatsapp"></i></a><br>
-                        <a href="#" class="tw-bg"><i class="fab fa-twitter"></i></a><br>
-                        <a href="Images/The Post Colonial Approches.pdf" class="btn-download" href="Images/The Post Colonial Approches.pdf">PDF</a>
+                        <a href="https://wa.me/?text=Knowledge transfer in design research https://internationaljournalofresearchineducationalstudies.in/" target="_blank" class="wa-bg"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="tw-bg"><i class="fab fa-twitter"></i></a>
+                        <a href="Images/The Post Colonial Approches.pdf" class="btn-download">PDF</a>
                     </div>
                 </div>
             </div>
 
-
-
-            
-            <div class="card">
+            <!-- Paper 122 -->
+            <div class="card dark">
                 <div style="margin-bottom:15px;">
                     <span style="background:#ce03b3; color:white; padding:5px 12px; border-radius:6px; font-size:0.8rem; font-weight:700;">Paper #122</span>
                 </div>
                 <h3 style="margin-bottom:12px; font-size:1.35rem; color:var(--text-heading);">Cultural Competency in Teacher Training</h3>
-                <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">An international comparative study examining cultural competency development across 15 countries.</p>
-                
-                <div class="paper-footer">
+                <div class="card-content-spacer">
+                    <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">An international comparative study examining cultural competency development across 15 countries.</p>
                     <div style="font-size:0.95rem; color:var(--text-muted); font-weight:600;">
                         <i class="fas fa-user" style="margin-right:5px;"></i> Prof. Aisha Patel<br>
                          <p>21-Nov-2025</p>
                          <p>👁 5,201</p>
                     </div>
+                </div>
 
+                <div class="paper-footer">
                     <div class="volume-square">
-                    <span>VOLUME</span>
-                    <h2 style="color: #03a827;">02</h2>
+                        <span>VOLUME</span>
+                        <h2 style="color: #03a827;">02</h2>
                     </div>
-
                     <div class="social-icons">
-                        <a href="https://wa.me/?text=Cultural Competency in Teacher Training https://internationaljournalofresearchineducationalstudies.in" target="_blank" class="wa-bg"><i class="fab fa-whatsapp"></i></a><br>
-                        <a href="#" class="tw-bg"><i class="fab fa-twitter"></i></a><br>
-                        <a href="#" class="btn-download" href="#">PDF</a>
+                        <a href="https://wa.me/?text=Cultural Competency in Teacher Training https://internationaljournalofresearchineducationalstudies.in" target="_blank" class="wa-bg"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="tw-bg"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn-download">PDF</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
-<!-- Editor Board Starts-->
-
- <div id="Editor-board" class="tab-content">
+    <!-- Editor Board -->
+     <div id="Editor-board" class="tab-content">
         <div class="grid-layout">
-            <div class="card">
+            <div class="card blue">
                 <div style="margin-bottom:15px;">
                     <span style="background:#011d0c; color:white; padding:5px 12px; border-radius:6px; font-size:0.8rem; font-weight:700;">Editor-in-Chief</span>
                 </div>
@@ -890,112 +920,38 @@ It shows how Grenville transforms Elizabeth Macarthur into an active narrator wh
                     Senior Lecture, University of Jos<br>
                     Plateau State, Nigeria<br>
                     Email : lerem@unijos.ng</p>
-
-                    
-                <div class="paper-footer">
-                    <!-- <div style="font-size:0.95rem; color:var(--text-muted); font-weight:600;">
-                        <i class="fas fa-user" style="margin-right:5px;"></i> Ms. Kayalvizhi G<br>
-                        <p>1-Jan-2026</p>
-                        <p>👁 136</p>
-                    </div> -->
-                    <!-- <div class="volume-box">
-                            <div class="volume-title">VOLUME</div>
-                            <div class="volume-number">05</div>
-                            <div class="volume-year">2026</div>
-                    </div> -->
-<!-- 
-                    <div class="volume-square">
-                    <p>VOLUME</p>
-                    <h2 style="color: #1DA1F2;">01</h2>
-                    </div> -->
-
-                   <!-- <div class="social-icons">
-                        <a href="https://wa.me/?text=I want to read this paper: Post-Colonial Approaches in Aravind Adiga's Novels https://internationaljournalofresearchineducationalstudies.in/" target="_blank" class="wa-bg"><i class="fab fa-whatsapp"></i></a><br>
-                        <a href="#" class="tw-bg"><i class="fab fa-twitter"></i></a><br>
-                        <a href="Images/The Post Colonial Approches.pdf" class="btn-download" href="Images/The Post Colonial Approches.pdf">PDF</a><br>
-                    </div> -->
-                </div>
             </div>
 
-
-
-            <div class="card">
+            <div class="card pink">
                 <div style="margin-bottom:15px;">
                     <span style="background:#042fec; color:white; padding:5px 12px; border-radius:6px; font-size:0.8rem; font-weight:700;">Editorial Assistant</span>
                 </div>
                 <h3 style="margin-bottom:12px; font-size:1.35rem; color:var(--text-heading);">Dr.G.Shankar.,MA,PhD,English</h3>
                 <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">English Assistant Professor</p>
-                
-                <div class="paper-footer">
-                    <!-- <div style="font-size:0.95rem; color:var(--text-muted); font-weight:600;">
-                        <i class="fas fa-user" style="margin-right:5px;"></i> Mr.Mohana Sundaram<br>
-                        <p>18-Dec-2025</p>
-                        <p>👁 1,656</p>
-                    </div> -->
-                    <!-- <div class="volume-square">
-                    <span>VOLUME</span>
-                    <h2 style="color: #043553;">03</h2>
-                    </div> -->
-                
-<!-- 
-                    <div class="social-icons">
-                        <a href="https://wa.me/?text=Knowledge transfer in design research https://internationaljournalofresearchineducationalstudies.in/" target="_blank" class="wa-bg"><i class="fab fa-whatsapp"></i></a><br>
-                        <a href="#" class="tw-bg"><i class="fab fa-twitter"></i></a><br>
-                        <a href="Images/The Post Colonial Approches.pdf" class="btn-download" href="Images/The Post Colonial Approches.pdf">PDF</a>
-                    </div> -->
-                </div>
             </div>
 
-
-
             
-            <div class="card">
+            <div class="card green">
                 <div style="margin-bottom:15px;">
                     <span style="background:#ce03b3; color:white; padding:5px 12px; border-radius:6px; font-size:0.8rem; font-weight:700;">EDITORIAL BOARD & EXECUTIVE EDITORS</span>
                 </div>
-                <!-- <h3 style="margin-bottom:12px; font-size:1.35rem; color:var(--text-heading);">Cultural Competency in Teacher Training</h3> -->
                 <p style="color:var(--text-body); font-size:1rem; margin-bottom:20px; line-height:1.7;">
-                    <b>Louis Nadelson</b>	<br>
-                    Chair, Associate Professor Leadership Studies, College of Education, University of Central Arkansas, USA	<br><br>
-                    <b>Seth Parsons</b>	<br>
-                    Professor, George Mason University, Virginia, USA	<br><br>
-                    <b> Ray Reutzel</b>	<br>
-                    Senior Research Fellow, Center for the School of the Futur, Utah State University, USA	<br><br>
-                    <b>Lisa Vernon-Dotson</b>	<br>
-                    Dean, College of Education, Ashland University, USA	<br><br>
-                    <b>Sarah Clark</b>	<br>
-                    Associate Professor, McKay School of Education, Brigham Young University, USA	<br><br>
-                    <b>Bryan Griffin</b>	<br>
-                    Curriculum, Foundations, & Reading, Georgia Southern University, USA	<br><br>
+                    <b>Louis Nadelson</b> <br>
+                    Chair, Associate Professor Leadership Studies, College of Education, University of Central Arkansas, USA <br><br>
+                    <b>Seth Parsons</b> <br>
+                    Professor, George Mason University, Virginia, USA <br><br>
+                    <b> Ray Reutzel</b> <br>
+                    Senior Research Fellow, Center for the School of the Futur, Utah State University, USA <br><br>
+                    <b>Lisa Vernon-Dotson</b> <br>
+                    Dean, College of Education, Ashland University, USA <br><br>
+                    <b>Sarah Clark</b> <br>
+                    Associate Professor, McKay School of Education, Brigham Young University, USA <br><br>
+                    <b>Bryan Griffin</b> <br>
+                    Curriculum, Foundations, & Reading, Georgia Southern University, USA <br><br>
                 </p>
-                
-                <div class="paper-footer">
-                    <!-- <div style="font-size:0.95rem; color:var(--text-muted); font-weight:600;">
-                        <i class="fas fa-user" style="margin-right:5px;"></i> Prof. Aisha Patel<br>
-                         <p>21-Nov-2025</p>
-                         <p>👁 3,218</p>
-                    </div>
-
-                    <div class="volume-square">
-                    <span>VOLUME</span>
-                    <h2 style="color: #03a827;">02</h2>
-                    </div>
-
-                    <div class="social-icons">
-                        <a href="https://wa.me/?text=Cultural Competency in Teacher Training https://internationaljournalofresearchineducationalstudies.in" target="_blank" class="wa-bg"><i class="fab fa-whatsapp"></i></a><br>
-                        <a href="#" class="tw-bg"><i class="fab fa-twitter"></i></a><br>
-                        <a href="#" class="btn-download" href="#">PDF</a>
-                    </div> -->
-                </div>
             </div>
         </div>
     </div>
-
-<!--Editor Board Ends-->
-
-
-
-
 
     <!-- 3. RESEARCH CATEGORIES -->
     <div id="research-papers" class="tab-content">
@@ -1085,14 +1041,11 @@ It shows how Grenville transforms Elizabeth Macarthur into an active narrator wh
         <div class="footer-logo">
             <h3 style="color:white; font-size:1.4rem; font-weight:700; margin-bottom:20px;">Indexing Partners</h3>
             <div class="footer-images-container">
-                <!-- FIXED: Added closing quotes to src -->
                 <img src="Images/Scope_us.png" alt="Scopus" class="footer-logo">
                 <img src="Images/Crossref.png" alt="Crossref" class="footer-logo">
-                <!-- <img src="Images/Crosscheck.jpg" alt="Crosscheck" class="footer-logo"> -->
                 <img src="Images/GOOG.png" alt="Google Scholar" class="footer-logo">
                 <img src="Images/COPE.png" alt="COPE" class="footer-logo">
                 <img src="Images/ROADDD.png" alt="ROAD" class="footer-logo">
-                <!-- <img src="Images/NKI.jpg" alt="NKI" class="footer-logo"> -->
                 <img src="Images/E23.png" alt="E23" class="footer-logo">
                 <img src="Images/journal-tocs.png" alt="Journal TOCs" class="footer-logo">
             </div>
@@ -1105,31 +1058,6 @@ It shows how Grenville transforms Elizabeth Macarthur into an active narrator wh
         &copy; 2021-2026 IJRES. All rights reserved.
     </div>
 </footer>
-
-<style>
-
-
-    /* Makes the footer images very small and horizontal */
-.footer-logo {
-    max-height: 30px;  /* <--- This makes them very small (adjust as needed) */
-    width: auto;       /* Keeps the width proportional so they don't stretch */
-    object-fit: contain; /* Ensures the logo fits inside the small height */
-    background: transparent;
-    display: inline-block;
-    margin: 0 5px;     /* Adds a tiny bit of space between logos */
-    vertical-align: middle;
-}
-
-/* Ensures the container stays in a row */
-.footer-images-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px; /* Space between the tiny logos */
-    align-items: center;
-}
-</style>
 
     <script>
         function openTab(evt, tabName) {
